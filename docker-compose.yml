@@ -1,0 +1,41 @@
+services:
+    mongo:
+        build: 
+            context: .
+            dockerfile: mongo.dockerfile
+        container_name: mongo
+        ports:
+            - "27017:27017"
+        volumes:
+            - ./mongodb:/data/db
+        networks:
+            - app-network
+
+    mongo-express:
+            build:
+                context: .
+                dockerfile: mongo-express.dockerfile
+            container_name: mongo-express
+            ports:
+                - "8081:8081"
+            networks:
+                - app-network
+            depends_on:
+                - mongo
+
+    app:
+        build:
+            context: .
+            dockerfile: app.dockerfile
+        container_name: app
+        ports:
+            - "3000:3000"
+        networks:
+            - app-network
+        depends_on:
+            - mongo
+            
+networks:
+    app-network:
+        driver: bridge
+
