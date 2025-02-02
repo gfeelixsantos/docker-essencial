@@ -4,7 +4,7 @@ const { MongoClient } = require('mongodb');
 const morgan = require('morgan');
 
 const app = express();
-const port = 3000;
+const port = 80;
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
