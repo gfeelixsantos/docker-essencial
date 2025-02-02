@@ -14,3 +14,4 @@ COPY . .
 CMD [ "node", "app.js" ]
 
 EXPOSE 80
+EXPOSE 443

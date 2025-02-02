@@ -34,7 +34,7 @@ B --> E((Docker-Compose))
 C --> E
 D --> E
 ```
-<div style="display:flex; gap: 1rem; justify-content:center">
+<div style="display:flex; gap: 1rem; justify-content:center;">
 
 ![](https://img.icons8.com/?size=100&id=54087&format=png&color=000000)
 

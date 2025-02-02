@@ -1,3 +1,5 @@
+const fs = require("node:fs");
+const https = require("node:https");
 const express = require('express');
 const bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
@@ -47,6 +49,15 @@ app.post('/users', async (req, res) => {
     console.error('Erro ao cadastrar usuário:', error);
     res.render('index', { message: null, error: 'Erro ao cadastrar usuário' });
   }
+});
+
+const options = {
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem')
+}
+
+https.createServer(options, app).listen(443, () => {  
+  console.log(`Aplicativo rodando em https://localhost:443`);
 });
 
 app.listen(port, () => {
